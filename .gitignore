@@ -18,6 +18,8 @@ env/
 *.db
 *.sqlite3
 *.sqlite
+# Local application instance
+instance/
 
 # IDE and editor files
 .vscode/

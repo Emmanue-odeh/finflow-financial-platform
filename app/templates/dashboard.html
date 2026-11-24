@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FinFlow | Financial Operations</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">F</div>
+                <span>FinFlow</span>
+            </div>
+
+            <div class="workspace">
+                <span class="workspace-label">WORKSPACE</span>
+                <span class="workspace-name">Personal & Business</span>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <span class="nav-heading">MAIN MENU</span>
+
+                <a href="#" class="nav-link active">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>▣</span> Accounts
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>⇄</span> Transactions
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>↗</span> Transfers
+                </a>
+
+                <span class="nav-heading">BUSINESS</span>
+
+                <a href="#" class="nav-link">
+                    <span>▤</span> Invoices
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>◈</span> Expenses
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>▥</span> Reports & Analytics
+                </a>
+
+                <span class="nav-heading">MANAGEMENT</span>
+
+                <a href="#" class="nav-link">
+                    <span>⬡</span> Security & Audit
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>⚙</span> Settings
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="security-status">
+                    <span class="status-dot"></span>
+                    Secure workspace
+                </div>
+                <span class="sidebar-version">FINFLOW PLATFORM V1.0</span>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <span>/</span>
+                    <strong>Dashboard</strong>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button class="search-button">
+                        Search anything...
+                    </button>
+
+                    <button class="notification-button"
+                            aria-label="Notifications">
+                        ♧
+                    </button>
+
+                    <div class="profile">
+                        <div class="profile-avatar">E</div>
+
+                        <div class="profile-info">
+                            <strong>Emmy</strong>
+                            <span>Administrator</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD BODY -->
+            <section class="dashboard-body">
+
+                <div class="welcome-section">
+
+                    <div>
+                        <span class="page-eyebrow">
+                            FINANCIAL OVERVIEW
+                        </span>
+
+                        <h1>Good morning, Emmy 👋</h1>
+
+                        <p>
+                            Here's what's happening with your finances today.
+                        </p>
+                    </div>
+
+                    <button class="date-filter">
+                        Last 30 days
+                    </button>
+
+                </div>
+
+
+                <!-- OVERVIEW CARDS -->
+                <section class="overview-grid">
+
+                    <article class="overview-card balance-card">
+                        <span class="card-label">TOTAL BALANCE</span>
+                        <h2>₦0.00</h2>
+                        <span class="card-description">
+                            Across all accounts
+                        </span>
+                    </article>
+
+                    <article class="overview-card">
+                        <span class="card-label">TOTAL INCOME</span>
+                        <h2>₦0.00</h2>
+                        <span class="card-description">
+                            This month
+                        </span>
+                    </article>
+
+                    <article class="overview-card">
+                        <span class="card-label">TOTAL EXPENSES</span>
+                        <h2>₦0.00</h2>
+                        <span class="card-description">
+                            This month
+                        </span>
+                    </article>
+
+                    <article class="overview-card">
+                        <span class="card-label">NET CASH FLOW</span>
+                        <h2>₦0.00</h2>
+                        <span class="card-description">
+                            Income minus expenses
+                        </span>
+                    </article>
+
+                </section>
+
+
+                <!-- ANALYTICS AND ACCOUNTS -->
+                <section class="dashboard-grid">
+
+                    <article class="dashboard-card analytics-card">
+
+                        <div class="section-header">
+                            <div>
+                                <h3>Cash Flow Overview</h3>
+                                <p>Monitor your financial activity</p>
+                            </div>
+
+                            <span class="card-period">Monthly</span>
+                        </div>
+
+                        <div class="chart-placeholder">
+                            <span>Financial analytics will appear here</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="dashboard-card accounts-card">
+
+                        <div class="section-header">
+                            <div>
+                                <h3>My Accounts</h3>
+                                <p>Your financial accounts</p>
+                            </div>
+
+                            <a href="#">View all</a>
+                        </div>
+
+                        <div class="empty-state">
+                            <div class="empty-icon">▣</div>
+                            <strong>No accounts yet</strong>
+                            <p>Your accounts will appear here.</p>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- RECENT TRANSACTIONS -->
+                <section class="dashboard-card transactions-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h3>Recent Transactions</h3>
+                            <p>Your latest financial activities</p>
+                        </div>
+
+                        <a href="#">View all transactions</a>
+
+                    </div>
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>TRANSACTION</th>
+                                    <th>CATEGORY</th>
+                                    <th>DATE</th>
+                                    <th>STATUS</th>
+                                    <th>AMOUNT</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="5" class="empty-table">
+                                        No transactions recorded yet.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
