@@ -1,13 +1,18 @@
 from flask import Flask
 from app.extensions import db
 
-def create_app():
+def create_app(test_config=None):
     app = Flask(__name__)
 
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///finflow.db"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+    if test_config:
+        app.config.update(test_config)
+
     db.init_app(app)
+    from app.models import User
+
 
     from app.routes import main
     app.register_blueprint(main)
