@@ -2,6 +2,7 @@ from app import create_app
 from app.extensions import db
 from app.models import User
 from sqlalchemy import inspect
+from sqlalchemy.exc import IntegrityError
 from werkzeug.security import generate_password_hash, check_password_hash
 
 def setup_test_database():
@@ -44,3 +45,36 @@ def test_create_user():
         saved_user = db.session.get(User, user.id)
 
         assert saved_user is not None
+        assert saved_user.full_name == "Emmy Test"
+        assert saved_user.email == "emmy.test@example.com"
+        assert check_password_hash(saved_user.password_hash, "FinFlowTest123!")
+        assert not check_password_hash(saved_user.password_hash, "WrongPassword123!")
+
+
+def test_duplicate_email():
+    app = setup_test_database()
+
+    with app.app_context():
+        first_user = User(
+            full_name="Emmy",
+            email="emmy@example.com",
+            password_hash=generate_password_hash("FirstPassword123!")
+        )
+
+        db.session.add(first_user)
+        db.session.commit()
+
+        duplicate_user = User(
+            full_name="Another User",
+            email="emmy@example.com",
+            password_hash=generate_password_hash("SecondPassword123!")
+        )
+
+        db.session.add(duplicate_user)
+
+        try:
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+        else:
+            assert False, "Duplicate email was allowed!"
