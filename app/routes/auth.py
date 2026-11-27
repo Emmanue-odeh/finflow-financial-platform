@@ -1,4 +1,5 @@
-from flask import render_template, request, redirect, url_for, flash
+
+from flask import render_template, request, redirect, url_for, flash, session
 from app.routes import main
 from app.services.auth_service import register_user, login_user
 
@@ -24,3 +25,23 @@ def register():
         return redirect(url_for("main.register"))
 
     return render_template("register.html")
+
+
+@main.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        user, error = login_user(email, password)
+
+        if error:
+            flash(error, "error")
+            return redirect(url_for("main.login"))
+
+        session.clear()
+        session["user_id"] = user.id
+
+        return redirect(url_for("main.dashboard"))
+
+    return render_template("login.html")
