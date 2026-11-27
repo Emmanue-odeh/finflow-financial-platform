@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | FinFlow</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <section class="auth-card">
+
+            <a href="{{ url_for('main.login') }}" class="brand">
+                Fin<span>Flow</span>
+            </a>
+
+            <div class="auth-heading">
+                <p class="eyebrow">WELCOME BACK</p>
+                <h1>Sign in to FinFlow</h1>
+                <p>Access your financial operations and stay in control.</p>
+            </div>
+
+            <div class="messages">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% for category, message in messages %}
+                        <div class="message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endwith %}
+            </div>
+
+            <form method="POST" action="{{ url_for('main.login') }}">
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="submit-button">
+                    Sign In
+                    <span>&rarr;</span>
+                </button>
+
+            </form>
+
+            <p class="auth-footer">
+                Don't have an account?
+                <a href="{{ url_for('main.register') }}">Create one</a>
+            </p>
+
+            <p class="security-note">
+                Your financial information deserves secure access.
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 
 import os
 
-from flask import Flask
+from flask import Flask, app
 from app.extensions import db
 
 
@@ -25,5 +25,8 @@ def create_app(test_config=None):
 
     from app.routes import main
     app.register_blueprint(main)
+
+    with app.app_context():
+        db.create_all()
 
     return app

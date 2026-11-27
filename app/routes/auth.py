@@ -28,6 +28,8 @@ def register():
 
 
 @main.route("/login", methods=["GET", "POST"])
+
+
 def login():
     if request.method == "POST":
         email = request.form.get("email")
@@ -45,3 +47,12 @@ def login():
         return redirect(url_for("main.dashboard"))
 
     return render_template("login.html")
+
+
+@main.route("/logout")
+def logout():
+    session.clear()
+
+    flash("You have been logged out successfully.", "success")
+
+    return redirect(url_for("main.login"))
